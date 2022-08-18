@@ -22,6 +22,15 @@ public interface TourRepository extends PagingAndSortingRepository<Tour, Integer
      */
     Page<Tour> findByTourPackageCode(@Param("code")String code, Pageable pageable);
 
+    /**
+     *only return the main fields of a tour, not the details
+     *
+     * @param code tour package code
+     * @param pageable pageable data
+     * @return tour without details
+     */
+    Page<Tour> findSummeryByTourPackageCode(@Param("code") String code, Pageable pageable);
+
     @Override
     @RestResource(exported = false)
     <S extends Tour> S save(S s);
